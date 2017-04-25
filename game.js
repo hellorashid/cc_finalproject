@@ -85,10 +85,7 @@ let landing = new Kingdom("Kings Landing", 15);
 
 let allKingdoms = [winterfell, qarth, bravos, pentos, thewall, redkeep, landing];
 
-let tempName = prompt("Please enter your name: ");
-
-
-let one = new Player(tempName);
+let one = new Player("Lord Stark");
 one.addKingdom(winterfell);
 one.addKingdom(qarth);
 one.addKingdom(bravos);

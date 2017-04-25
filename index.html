@@ -1,0 +1,131 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.css" type="text/css">
+
+ </head>
+
+<body>
+
+  <div id="app">
+
+
+
+
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="" data-writefull-timeout="null">A Game with Thrones: {{ playerName }} </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <ul class="list-group">
+              <li class="list-group-item"  v-for="kingdom, index in allKingdoms">
+                  {{kingdom.name}} , {{kingdom.power}}
+                </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+
+
+          <div class="card">
+            <div class="card-block">
+              <h4 class="card-title">Attack</h4>
+              <p class="card-text p-y-1">Choose the attacker and defenders.</p>
+
+              <div class="btn-group">
+                <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
+                <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-divider"></div> <a class="dropdown-item" href="#">Separated link</a> </div>
+              </div>
+
+              <div class="btn-group"> <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
+                <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a>
+                  <div class="dropdown-divider"></div> <a class="dropdown-item" href="#">Separated link</a> </div>
+              </div>
+            </div><a href="#" class="btn btn-outline-primary">Attack</a>
+
+           </div>
+
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>My Kingdoms</th>
+                <th>Armies: {{player.totalPower}}</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr v-for="kingdom, index in player.myKingdoms" >
+                <td>{{kingdom.name}}</td>
+                <td>{{kingdom.power}}</td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"> <button class="close" data-dismiss="modal" type="button">×</button>
+            <h4 class="modal-title">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>One fine body...</p>
+            <div class="btn-group"> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
+              <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-divider"></div> <a class="dropdown-item" href="#">Separated link</a> </div>
+            </div>
+            <div class="btn-group"> <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
+              <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-divider"></div> <a class="dropdown-item" href="#">Separated link</a> </div>
+            </div>
+          </div>
+          <div class="modal-footer"> <a class="btn btn-default" data-dismiss="modal">Close</a> <a class="btn btn-primary">Save
+                  changes</a> </div>
+        </div>
+      </div>
+    </div>
+
+
+
+</div>
+ <!-- Closing App -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="game.js"></script>
+  <script>
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      playerName: one.name,
+      allKingdoms: allKingdoms,
+      player: one,
+    },
+    methods: {
+      attack : function (someKingdom) {
+      },
+    }
+    })
+  </script>
+
+</body>
+
+</html>
