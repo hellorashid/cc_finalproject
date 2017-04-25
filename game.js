@@ -1,8 +1,6 @@
 // This is the framework for the "Risk of Thrones" Game.
 console.log("Let the Games Begin!")
 
-
-
 // Kingdom Class
 class Kingdom {
   constructor(name = '', power = 0){
@@ -25,11 +23,15 @@ class Kingdom {
     } else if (this.power < defender.power) {
         console.log(defender.name, " beat ", this.name);
         this.power -= 2;
+    } else {
+      console.log("Tie: ", this.name, defender.name);
+        this.power -=1;
+        defender.power-=1;
     }
   }
-
 }
 
+// Defines Player
 class Player {
   constructor(name) {
     this.name = name;
@@ -37,6 +39,7 @@ class Player {
     this.totalPower = 0;
   }
 
+  // Returns Total Power for player
   getTotalPower () {
     console.log(this.name, " total kingdom:")
     for (var x of this.myKingdoms) {
@@ -45,11 +48,13 @@ class Player {
     console.log (" -> Total Power: ", this.totalPower);
   }
 
+  // Adds new kingdom to players array
   addKingdom (newKingdom) {
     this.myKingdoms.push(newKingdom);
     this.totalPower += newKingdom.power;
   }
 
+  // Removes kingdom from array --- BUG --
   removeKingdom (oldKingdom) {
     let target = 100;
     for (var x in this.myKingdoms) {
@@ -63,28 +68,29 @@ class Player {
     //console.log(target);
   }
 
+  // Moves kingdom from one player to another -- BUG --
   move (source, destination, number) {
       source.power -= number;
       destination.power += number;
   }
-
 }
-
 // ----- END DEFINTIONS --- //
 
 // Create Kingdoms & Initiate Players
 let winterfell = new Kingdom("Winterfell", 10);
-let qarth = new Kingdom("Qarth", 10);
-let bravos = new Kingdom("Braavos", 10);
-let pentos = new Kingdom("Pentos", 10);
+let qarth = new Kingdom("Qarth", 12);
+let bravos = new Kingdom("Braavos", 15);
+let pentos = new Kingdom("Pentos", 9);
 
 let thewall = new Kingdom("The Wall", 5);
 let redkeep = new Kingdom("The Red Keep", 12);
 let landing = new Kingdom("Kings Landing", 15);
 
-
+//Create Array of All Kingdoms
 let allKingdoms = [winterfell, qarth, bravos, pentos, thewall, redkeep, landing];
 
+
+// Creating Players & adding dummy data
 let one = new Player("Lord Stark");
 one.addKingdom(winterfell);
 one.addKingdom(qarth);
@@ -100,6 +106,4 @@ two.addKingdom(landing);
 // Testing
 one.getTotalPower();
 two.getTotalPower();
-
-
 one.getTotalPower();

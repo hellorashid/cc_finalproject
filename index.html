@@ -9,17 +9,12 @@
  </head>
 
 <body>
-
   <div id="app">
-
-
-
-
   <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="" data-writefull-timeout="null">A Game with Thrones: {{ playerName }} </h1>
+          <h1 class="" data-writefull-timeout="null">A Game with Thrones: {{ player.name }} </h1>
         </div>
       </div>
       <div class="row">
@@ -40,17 +35,29 @@
               <h4 class="card-title">Attack</h4>
               <p class="card-text p-y-1">Choose the attacker and defenders.</p>
 
-              <div class="btn-group">
-                <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
-                <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a>
-                <div class="dropdown-divider"></div> <a class="dropdown-item" href="#">Separated link</a> </div>
-              </div>
+              <!-- <div class="btn-group" v-model="attacker">
+                <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"> Attacker </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Winterfell</a>
+                <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Qarth</a> </div>
+              </div> -->
 
-              <div class="btn-group"> <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
+              <select class="btn btn-outline-primary dropdown-toggle" v-model="attacker"              >
+                <option disabled value="">Attacker</option>
+                <option  v-for="kingdom, index in player.myKingdoms"
+                v-bind:value="{attackerVar: kingdom}" > {{kingdom.name}} </option>
+                <!-- <option>Qarth</option>
+                <option>Braavos</option> -->
+              </select>
+
+          <div class="btn-group"> <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
                 <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a>
                   <div class="dropdown-divider"></div> <a class="dropdown-item" href="#">Separated link</a> </div>
               </div>
-            </div><a href="#" class="btn btn-outline-primary">Attack</a>
+            </div>
+            <!-- <a href="#" class="btn btn-outline-primary">Attack</a> -->
+            <button class="btn btn-outline-primary" v-on:click="attack">Attack</button>
 
            </div>
 
@@ -76,7 +83,6 @@
     </div>
   </div>
 
-
   <div class="modal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -99,33 +105,32 @@
         </div>
       </div>
     </div>
-
-
-
 </div>
+
  <!-- Closing App -->
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
-
   <script src="https://unpkg.com/vue"></script>
   <script src="game.js"></script>
   <script>
-
-  var app = new Vue({
-    el: '#app',
-    data: {
-      playerName: one.name,
-      allKingdoms: allKingdoms,
-      player: one,
-    },
-    methods: {
-      attack : function (someKingdom) {
+    let attackerVar = winterfell;
+    var app = new Vue({
+      el: '#app',
+      data: {
+        allKingdoms: allKingdoms,
+        player: one,
+        attacker: attackerVar,
+        // winterfell: winterfell
       },
-    }
+      methods: {
+        attack : function () {
+          bravos.attack(qarth);
+          //attacker.attack(defender);
+        }
+      }
     })
   </script>
-
 </body>
 
 </html>
