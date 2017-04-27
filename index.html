@@ -35,11 +35,11 @@
               <h4 class="card-title">Attack</h4>
               <p class="card-text p-y-1">Choose the attacker and defenders.</p>
               <select class="btn btn-outline-primary dropdown-toggle" v-model="attacker">
-                <option  v-for="kingdom, index in turn.myKingdoms"
+                <option  v-for="kingdom, index in playerOne.myKingdoms"
                 v-bind:value="kingdom.name" > {{kingdom.name}} </option>
               </select>
               <select class="btn btn-outline-primary dropdown-toggle" v-model="defender">
-                <option  v-for="kingdom, index in turn.myKingdoms"
+                <option  v-for="kingdom, index in playerOne.myKingdoms"
                 v-bind:value="kingdom.name" > {{kingdom.name}} </option>
               </select>
             <button class="btn btn-outline-primary" v-on:click="attack(attacker, defender)">Attack</button>
@@ -130,7 +130,7 @@
   <script src="https://unpkg.com/vue"></script>
   <script src="game.js"></script>
   <script>
-    let turn = two;
+    let turn = one;
 
     var app = new Vue({
       el: '#app',
