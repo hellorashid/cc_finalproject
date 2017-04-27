@@ -1,5 +1,5 @@
 // This is the framework for the "Risk of Thrones" Game.
-console.log("Let the Games Begin!")
+console.log("Winter is Coming!")
 
 // Kingdom Class
 class Kingdom {
@@ -37,6 +37,7 @@ class Player {
     this.name = name;
     this.myKingdoms = [];
     this.totalPower = 0;
+    this.totalKingdoms = {};
   }
 
   // Returns Total Power for player
@@ -52,6 +53,9 @@ class Player {
   addKingdom (newKingdom) {
     this.myKingdoms.push(newKingdom);
     this.totalPower += newKingdom.power;
+    //this.totalPower.newKingdom.name = newKingdom;
+    this.totalKingdoms[newKingdom.name] = newKingdom;
+
   }
 
   // Removes kingdom from array --- BUG --
@@ -90,6 +94,8 @@ let landing = new Kingdom("Kings Landing", 15);
 let allKingdoms = [winterfell, qarth, bravos, pentos, thewall, redkeep, landing];
 
 
+
+
 // Creating Players & adding dummy data
 let one = new Player("Lord Stark");
 one.addKingdom(winterfell);
@@ -102,8 +108,8 @@ let two = new Player("Tyrion Badass")
 two.addKingdom(redkeep);
 two.addKingdom(landing);
 
-
 // Testing
-one.getTotalPower();
-two.getTotalPower();
-one.getTotalPower();
+// one.getTotalPower();
+// two.getTotalPower();
+// one.getTotalPower();
+console.log("Winter is Here!");

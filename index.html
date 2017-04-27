@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.css" type="text/css">
-
  </head>
 
 <body>
@@ -34,32 +33,30 @@
             <div class="card-block">
               <h4 class="card-title">Attack</h4>
               <p class="card-text p-y-1">Choose the attacker and defenders.</p>
-
-              <!-- <div class="btn-group" v-model="attacker">
-                <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"> Attacker </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Winterfell</a>
-                <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Qarth</a> </div>
-              </div> -->
-
-              <select class="btn btn-outline-primary dropdown-toggle" v-model="attacker"              >
-                <option disabled value="">Attacker</option>
+              <select class="btn btn-outline-primary dropdown-toggle" v-model="attacker">
                 <option  v-for="kingdom, index in player.myKingdoms"
-                v-bind:value="{attackerVar: kingdom}" > {{kingdom.name}} </option>
-                <!-- <option>Qarth</option>
-                <option>Braavos</option> -->
+                v-bind:value="kingdom.name" > {{kingdom.name}} </option>
               </select>
-
-          <div class="btn-group"> <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
-                <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a>
-                  <div class="dropdown-divider"></div> <a class="dropdown-item" href="#">Separated link</a> </div>
-              </div>
-            </div>
-            <!-- <a href="#" class="btn btn-outline-primary">Attack</a> -->
-            <button class="btn btn-outline-primary" v-on:click="attack">Attack</button>
-
+              <select class="btn btn-outline-primary dropdown-toggle" v-model="defender">
+                <option  v-for="kingdom, index in player.myKingdoms"
+                v-bind:value="kingdom.name" > {{kingdom.name}} </option>
+              </select>
+            <button class="btn btn-outline-primary" v-on:click="attack(attacker, defender)">Attack</button>
            </div>
+
+           <div class="card-block">
+             <h4 class="card-title">Move</h4>
+             <p class="card-text p-y-1">Move troops from one Kingdom to another.</p>
+             <select class="btn btn-outline-primary dropdown-toggle" v-model="attacker">
+               <option  v-for="kingdom, index in player.myKingdoms"
+               v-bind:value="kingdom.name" > {{kingdom.name}} </option>
+             </select>
+             <select class="btn btn-outline-primary dropdown-toggle" v-model="defender">
+               <option  v-for="kingdom, index in player.myKingdoms"
+               v-bind:value="kingdom.name" > {{kingdom.name}} </option>
+             </select>
+           <button class="btn btn-outline-primary" v-on:click="attack(attacker, defender)">Attack</button>
+          </div>
 
 
           <table class="table">
@@ -106,7 +103,7 @@
       </div>
     </div>
 </div>
-
+</div>
  <!-- Closing App -->
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
@@ -120,13 +117,16 @@
       data: {
         allKingdoms: allKingdoms,
         player: one,
-        attacker: attackerVar,
+        attacker: '',
+        defender: '',
+        move1: '',
+        move2: '',
         // winterfell: winterfell
       },
       methods: {
-        attack : function () {
-          bravos.attack(qarth);
-          //attacker.attack(defender);
+        attack : function (theattacker, thedefender) {
+          one.totalKingdoms[theattacker].attack(one.totalKingdoms[thedefender]);
+
         }
       }
     })
