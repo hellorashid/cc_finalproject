@@ -95,18 +95,18 @@ let allKingdoms = [winterfell, qarth, bravos, pentos, thewall, redkeep, landing]
 
 
 
-
 // Creating Players & adding dummy data
 let one = new Player("Lord Stark");
 one.addKingdom(winterfell);
 one.addKingdom(qarth);
 one.addKingdom(bravos);
-one.addKingdom(pentos);
 one.addKingdom(thewall);
 
-let two = new Player("Tyrion Badass")
+let two = new Player("Lord Tyrion")
 two.addKingdom(redkeep);
 two.addKingdom(landing);
+two.addKingdom(pentos);
+
 
 // Testing
 // one.getTotalPower();
