@@ -1,0 +1,47 @@
+#app {
+  background-color: ;
+}
+
+.container {
+  margin: 0px;
+  padding:0px;
+  padding-top: 0px;
+}
+
+#header {
+  background-color: rgb(64, 62, 79);
+  width: 100vw;
+  padding: 1%;
+  top: 0px;
+  color:white;
+}
+
+
+#mainRow {
+  background-color: rgb(152, 60, 85);
+  width: 100vw;
+}
+
+#mapColumn {
+  background-color:rgb(49, 50, 51) ;
+}
+
+#bottomRow {
+  background-color: rgb(64, 62, 79);
+  width: 100vw;
+  color:white;
+  padding: 1%;
+}
+
+.card {
+  background-color: #01002B;
+  color:white;
+}
+
+.card table {
+  color:white;
+}
+
+table, th, td {
+   border: 0px solid #64ACD8 ;
+}
