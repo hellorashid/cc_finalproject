@@ -24,6 +24,11 @@
 
 #mapColumn {
   background-color:rgb(49, 50, 51) ;
+  padding: 1%;
+}
+
+#mapColumn.card {
+  margin: 2%;
 }
 
 #bottomRow {
@@ -44,4 +49,8 @@
 
 table, th, td {
    border: 0px solid #64ACD8 ;
+}
+
+.cls-1 {
+  fill: black;
 }

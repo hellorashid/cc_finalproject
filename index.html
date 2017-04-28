@@ -25,6 +25,10 @@
       <div class="row" id="mainRow">
         <!-- Map Colum -->
         <div class="col-md-6" id="mapColumn" >
+
+          <div id="map">
+
+          </div>
           <!-- <div class="card">
             <ul class="list-group">
               <li class="list-group-item"  v-for="kingdom, index in allKingdoms">
@@ -33,7 +37,7 @@
             </ul>
           </div> -->
 
-        <image src="nyc.svg">
+        <!-- <image src="nyc.svg"> -->
 
         </div>
         <!-- Player Column -->
@@ -66,8 +70,10 @@
              </select>
            <button class="btn btn-outline-primary" v-on:click="move(move1, move2)">Move</button>
           </div>
+        </div>
+        <div class="card">
 
-
+          <div class="card-block">
           <table class="table">
             <thead>
               <tr>
@@ -83,6 +89,7 @@
             </tbody>
 
           </table>
+        </div>
         </div>
 
       </div>
@@ -180,6 +187,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
   <script src="https://unpkg.com/vue"></script>
+  <script src="raphael-min.js"></script>
+  <script src="map.js"></script>
+
   <script src="game.js"></script>
   <script>
     let turn = one;
