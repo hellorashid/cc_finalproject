@@ -681,11 +681,11 @@
               <h4 class="card-title">Attack</h4>
               <p class="card-text p-y-1">Choose the attacker and defenders.</p>
               <select class="btn btn-outline-primary dropdown-toggle" v-model="attacker">
-                <option  v-for="kingdom, index in playerOne.myKingdoms"
+                <option  v-for="kingdom, index in players[turn].myKingdoms"
                 v-bind:value="kingdom.name" > {{kingdom.name}} </option>
               </select>
               <select class="btn btn-outline-primary dropdown-toggle" v-model="defender">
-                <option  v-for="kingdom, index in playerOne.myKingdoms"
+                <option  v-for="kingdom, index in players[turn].myKingdoms"
                 v-bind:value="kingdom.name" > {{kingdom.name}} </option>
               </select>
             <button class="btn btn-outline-primary" v-on:click="attack(attacker, defender)">Attack</button>
@@ -695,11 +695,11 @@
              <h4 class="card-title">Move</h4>
              <p class="card-text p-y-1">Move troops from one Kingdom to another.</p>
              <select class="btn btn-outline-primary dropdown-toggle" v-model="move1">
-               <option  v-for="kingdom, index in playerOne.myKingdoms"
+               <option  v-for="kingdom, index in players[turn].myKingdoms"
                v-bind:value="kingdom.name" > {{kingdom.name}} </option>
              </select>
              <select class="btn btn-outline-primary dropdown-toggle" v-model="move2">
-               <option  v-for="kingdom, index in playerOne.myKingdoms"
+               <option  v-for="kingdom, index in players[turn].myKingdoms"
                v-bind:value="kingdom.name" > {{kingdom.name}} </option>
              </select>
            <button class="btn btn-outline-primary" v-on:click="move(move1, move2)">Move</button>
@@ -711,11 +711,11 @@
             <thead>
               <tr>
                 <th>My Kingdoms</th>
-                <th>Armies: {{playerOne.totalPower}}</th>
+                <th>Armies: {{players[turn].totalPower}}</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="kingdom, index in playerOne.myKingdoms" >
+              <tr v-for="kingdom, index in players[turn].myKingdoms" >
                 <td>{{kingdom.name}}</td>
                 <td>{{kingdom.power}}</td>
               </tr>
@@ -755,12 +755,12 @@
         <table class="table">
           <thead>
             <tr>
-              <th>{{playerTwo.name}}'s Kingdoms</th>
-              <th>Armies: {{playerTwo.totalPower}}</th>
+              <th>{{playerThree.name}}'s Kingdoms</th>
+              <th>Armies: {{playerThree.totalPower}}</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="kingdom, index in playerTwo.myKingdoms" >
+            <tr v-for="kingdom, index in playerThree.myKingdoms" >
               <td>{{kingdom.name}}</td>
               <td>{{kingdom.power}}</td>
             </tr>
@@ -768,18 +768,18 @@
         </table>
       </div>
       </div>
-      <div class="col-md-4">
 
+      <div class="col-md-4">
         <div class="card">
           <table class="table">
             <thead>
               <tr>
-                <th>{{playerTwo.name}}'s Kingdoms</th>
-                <th>Armies: {{playerTwo.totalPower}}</th>
+                <th>{{playerOne.name}}'s Kingdoms</th>
+                <th>Armies: {{playerOne.totalPower}}</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="kingdom, index in playerTwo.myKingdoms" >
+              <tr v-for="kingdom, index in playerOne.myKingdoms" >
                 <td>{{kingdom.name}}</td>
                 <td>{{kingdom.power}}</td>
               </tr>
@@ -823,8 +823,6 @@
 
   <script src="game.js"></script>
   <script>
-
-    let players = [one, two, three];
     let turn = 0;
     var app = new Vue({
       el: '#app',
@@ -834,6 +832,7 @@
         turn: turn,
         playerOne: one,
         playerTwo: two,
+        playerThree: three,
         attacker: '',
         defender: '',
         move1: '',
@@ -845,7 +844,7 @@
           players[turn].totalKingdoms[theattacker].attack(players[turn].totalKingdoms[thedefender]);
         },
         move : function (move1, move2) {
-          turn.move( turn.totalKingdoms[move1],turn.totalKingdoms[move2], 2);
+          players[turn].move( players[turn].totalKingdoms[move1], players[turn].totalKingdoms[move2], 2);
         },
         nextTurn: function () {
           if (this.turn == (this.players.length-1)) {
