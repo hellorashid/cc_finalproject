@@ -16,20 +16,27 @@
   color:white;
 }
 
+#map {
+  width: 80%
+}
 
 #mainRow {
-  background-color: rgb(152, 60, 85);
+  /*background-color: rgb(152, 60, 85);*/
+  background-color:rgb(49, 50, 51) ;
+  padding-top: 1%;
   width: 100vw;
 }
 
-#mapColumn {
-  background-color:rgb(49, 50, 51) ;
-  padding: 1%;
-}
-
-#mapColumn.card {
+#mainRowCard {
   margin: 2%;
 }
+
+#mapColumn {
+  /*background-color:rgb(49, 50, 51) ;*/
+  /*padding: 1%;*/
+}
+
+
 
 #bottomRow {
   background-color: rgb(64, 62, 79);
@@ -51,6 +58,18 @@ table, th, td {
    border: 0px solid #64ACD8 ;
 }
 
-.cls-1 {
-  fill: black;
+
+/*SVG MAP STYLES */
+
+#nycMap {
+  background-color: none;
 }
+
+.st0 {
+  fill: #F0F1F5;
+  stroke: #112233;
+  stroke-width: 0.25px;
+}
+.st0:hover {
+  fill: #112233;
+ }

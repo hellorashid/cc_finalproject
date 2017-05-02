@@ -105,7 +105,11 @@ one.addKingdom(thewall);
 let two = new Player("Lord Tyrion")
 two.addKingdom(redkeep);
 two.addKingdom(landing);
-two.addKingdom(pentos);
+
+let three = new Player("Lord Tyrion")
+three.addKingdom(pentos);
+
+
 
 
 // Testing
