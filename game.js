@@ -7,6 +7,7 @@ class Kingdom {
     // Default Power is Zero
     this.power = power;
     this.name = name;
+    this.color = '';
   };
 
   // Returns the Power of Kingdom
@@ -33,11 +34,12 @@ class Kingdom {
 
 // Defines Player
 class Player {
-  constructor(name) {
+  constructor(name, color) {
     this.name = name;
     this.myKingdoms = [];
     this.totalPower = 0;
     this.totalKingdoms = {};
+    this.color = "#F0F1F5";
   }
 
   // Returns Total Power for player
@@ -150,9 +152,9 @@ let allKingdoms = [statenIsland, flushing, bayside, georgetown, ozonepark, eastn
 
 
 // Creating Players & adding dummy data
-let one = new Player("Player One");
-let two = new Player("Player Two")
-let three = new Player("Player Three")
+let one = new Player("Player One", '#66CC99');
+let two = new Player("Player Two", '#44BBFF')
+let three = new Player("Player Three", '#FC575E')
 
 let players = [one, two, three];
 
@@ -166,6 +168,7 @@ function getRandom(min, max) {
 
 for (kingdom of allKingdoms) {
   let rand = getRandom(0,(players.length -1));
+  kingdom.color = players[rand].color;
   players[rand].addKingdom(kingdom);
 }
 

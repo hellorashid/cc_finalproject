@@ -53,6 +53,11 @@ table{
    display:block;
 }
 
+#mainTable {
+  height:400px;
+
+}
+
 table::-webkit-scrollbar {
     width: 1em;
 }
