@@ -41,6 +41,7 @@ class Player {
     this.totalPower = 0;
     this.totalKingdoms = {};
     this.color = "#F0F1F5";
+    this.colorClass = color;
   }
 
   // Returns Total Power for player
@@ -154,9 +155,9 @@ let allKingdoms = [hillcrest, mounthope, statenIsland, flushing, bayside, george
 
 
 // Creating Players & adding dummy data
-let one = new Player("Player One", '#66CC99');
-let two = new Player("Player Two", '#44BBFF')
-let three = new Player("Player Three", '#FC575E')
+let one = new Player("Player One", 'st1');
+let two = new Player("Player Two", 'st2')
+let three = new Player("Player Three", 'st3')
 
 let players = [one, two, three];
 
@@ -170,7 +171,8 @@ function getRandom(min, max) {
 
 for (kingdom of allKingdoms) {
   let rand = getRandom(0,(players.length -1));
-  kingdom.color = players[rand].color;
+  // kingdom.color = players[rand].color;
+  kingdom.path.pathClass = players[rand].colorClass;
   players[rand].addKingdom(kingdom);
 }
 

@@ -46,20 +46,63 @@ body::-webkit-scrollbar-thumb {
   margin: 2%;
 }
 
+.profilePicture {
+  width: 80px;
+  border-radius: 50%;
+}
+
 #mapColumn {
   /*background-color:rgb(49, 50, 51) ;*/
   /*padding: 1%;*/
 }
 
+thead, tbody { display:block;}
+
 tbody{
    overflow-y:scroll;
    height:200px;
-   display:block;
+   /*display: block;*/
+   width: 100%;
 }
 
 #mainTable {
-  height:400px;
+  /*height:400px;*/
+  width: 100%;
 
+}
+
+
+
+
+table{
+  width:100%;
+  table-layout: fixed;
+}
+.tbl-header{
+  background-color: rgba(255,255,255,0.3);
+ }
+.tbl-content{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
 }
 
 tbody::-webkit-scrollbar {
@@ -103,7 +146,7 @@ table, th, td {
 }
 
 .st0 {
-  fill: #F0F1F5;
+  /*fill: #F0F1F5;*/
   stroke: #112233;
   stroke-width: 0.25px;
 }
@@ -111,7 +154,22 @@ table, th, td {
   fill: #112233;
  }
 
+path:hover {
+  fill: #112233;
+}
 
 .st1 {
-  displa:none;
+  fill: #6BB18C;
+  stroke: #112233;
+  stroke-width: 0.25px;
+}
+.st2 {
+  fill: #DC626F;
+  stroke: #112233;
+  stroke-width: 0.25px;
+}
+.st3 {
+  fill: #EF9688;
+  stroke: #112233;
+  stroke-width: 0.25px;
 }
