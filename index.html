@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.5.0/hint.base.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.4.0/hint.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Lato:200" rel="stylesheet">
 
  </head>
 
@@ -39,36 +40,63 @@
 
           <div class="card" id="mainRowCard">
 
-            <div class="row" id="header">
+            <div class="card-block" id="header">
+              <div class="row">
               <div class="col-md-2">
                 <img src="https://api.adorable.io/avatars/80/player1" class="profilePicture">
               </div>
                 <div class="col-md-6">
-
                 <h1 class="" data-writefull-timeout="null">{{players[turn].name}} </h1>
               </div>
               <div class="col-md-4">
                 <button class="btn btn-outline-primary" v-on:click="nextTurn()">Next Turn</button>
               </div>
             </div>
-            <div class="card-block">
-            <table class="table" id="mainTable">
-              <thead class="tbl-header">
-                <tr>
-                  <th>My Kingdoms</th>
-                  <th>Armies: {{players[turn].totalPower}}</th>
-                </tr>
-              </thead>
-              <tbody class="table-content">
-                <tr v-for="kingdom, index in players[turn].myKingdoms" >
-                  <td>{{kingdom.name}}</td>
-                  <td>{{kingdom.power}}</td>
-                </tr>
-              </tbody>
+            </div>
 
-            </table>
+          <div class="card-block" id="table-main-wrapper">
+              <div class="row">
+
+                <div class="col-md-6" id="score-col">
+                  <div class="score-card ">
+                    <h2 class="">  {{players[turn].totalPower}} </h2>
+                    <h4> TOTAL POWER </h4>
+                    <img  id="divider" src="divider.png">
+                    <div class=""> <h2> {{numberOfKingdoms(players[turn])}} </h2> </div>
+                    <h4> TOTAL REGIONS</h4>
+
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div id="my-wrapper">
+                    <div id="table">
+                      <div class="header" id="row">
+                        <div id="cell">
+                          Region
+                        </div>
+                        <div id="cell">
+                          Power
+                        </div>
+                      </div>
+                      <div id="table-body">
+                        <div v-for="kingdom, index in players[turn].myKingdoms" id="row">
+                          <div id="cell">
+                            {{kingdom.name}}
+                          </div>
+                          <div id="cell">
+                            {{kingdom.power}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div> <!-- End Row -->
+            </diV> <!-- End Card Block -->
           </div>
-          </div>
+
 
           <div class="card" id="mainRowCard">
 
@@ -106,74 +134,64 @@
       </div>
       <!-- End Player Column -->
     </div>
+
+
+
+
     <div class="row" id="bottomRow">
-
-      <div class="col-md-4">
-
-      <div class="card">
-        <div class="card-block">
-
-        <table class="table">
-          <thead>
-            <tr>
-              <th>{{playerTwo.name}}'s Kingdoms</th>
-              <th>Armies: {{playerTwo.totalPower}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="kingdom, index in playerTwo.myKingdoms" >
-              <td>{{kingdom.name}}</td>
-              <td>{{kingdom.power}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-
-      <div class="card">
-        <div class="card-block">
-
-        <table class="table">
-          <thead>
-            <tr>
-              <th>{{playerThree.name}}'s Kingdoms</th>
-              <th>Armies: {{playerThree.totalPower}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="kingdom, index in playerThree.myKingdoms" >
-              <td>{{kingdom.name}}</td>
-              <td>{{kingdom.power}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-block">
-
-          <table class="table">
-            <thead>
-              <tr>
-                <th>{{playerOne.name}}'s Kingdoms</th>
-                <th>Armies: {{playerOne.totalPower}}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="kingdom, index in playerOne.myKingdoms" >
-                <td>{{kingdom.name}}</td>
-                <td>{{kingdom.power}}</td>
-              </tr>
-            </tbody>
-          </table>
+      <div v-for="player in players" class="col-md-4">
+        <div class="card" id="mainRowCard">
+          <div class="card-block" id="header">
+            <div class="row">
+            <div class="col-md-3">
+              <img class="profilePicture">
+            </div>
+              <div class="col-md-9">
+              <h1 class="" data-writefull-timeout="null">{{player.name}} </h1>
+            </div>
+          </div>
+          </div>
+        <div class="card-block" id="table-main-wrapper">
+            <div class="row">
+              <div class="col-md-5" id="score-col">
+                <div class="score-card ">
+                  <h2 class="">  {{player.totalPower}} </h2>
+                  <h4> TOTAL POWER </h4>
+                  <img  id="divider" src="divider.png">
+                  <div class=""> <h2> {{numberOfKingdoms(player)}} </h2> </div>
+                  <h4> TOTAL REGIONS</h4>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div id="my-wrapper">
+                  <div id="table">
+                    <div class="header" id="row">
+                      <div id="cell">
+                        Region
+                      </div>
+                      <div id="cell">
+                        Power
+                      </div>
+                    </div>
+                    <div id="table-body">
+                      <div v-for="kingdom, index in player.myKingdoms" id="row">
+                        <div id="cell">
+                          {{kingdom.name}}
+                        </div>
+                        <div id="cell">
+                          {{kingdom.power}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- End Row -->
+          </diV> <!-- End Card Block -->
         </div>
-        </div>
-        </div>
+      </div>
+
+
   </div>
   </div>
 
@@ -256,6 +274,17 @@
         mapMessageUpdate (kingdom) {
             this.mapMessage = "kingdom";
         },
+        numberOfKingdoms(somePlayer) {
+            let x = 0;
+            for (kingdom in somePlayer.totalKingdoms) {
+              x+=1;
+            }
+            return x;
+        },
+        getPhoto(name) {
+          let link = "https://api.adorable.io/avatars/80/" + name;
+          return link;
+        }
       }
     })
   </script>

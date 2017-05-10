@@ -42,6 +42,7 @@ class Player {
     this.totalKingdoms = {};
     this.color = "#F0F1F5";
     this.colorClass = color;
+    this.photo = "https://google.com"
   }
 
   // Returns Total Power for player
